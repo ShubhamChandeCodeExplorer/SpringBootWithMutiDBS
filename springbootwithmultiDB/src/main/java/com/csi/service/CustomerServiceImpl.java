@@ -17,6 +17,15 @@ public class CustomerServiceImpl {
         return customerRepositoryImpl.save(customer);
     }
 
+    public boolean signIn(String custEmail,String custPassword){
+        boolean flag=false;
+        Customer customer=customerRepositoryImpl.findByCustEmailAndCustPassword(custEmail,custPassword);
+        if(customer!=null&&customer.getCustEmail().equals(custEmail)&&customer.getCustPassword().equals(custPassword)){
+            flag=true;
+        }
+        return flag;
+    }
+
     public Optional<Customer> findById(int custId){
         return customerRepositoryImpl.findById(custId);
     }

@@ -25,6 +25,11 @@ public class CustomerController {
         return ResponseEntity.ok(customerServiceImpl.save(customer));
     }
 
+    @GetMapping("/signin/{custEmail}/{custPassword}")
+    public ResponseEntity<Boolean> signIn(@PathVariable String custEmail,@PathVariable String custPassword){
+        return ResponseEntity.ok(customerServiceImpl.signIn(custEmail,custPassword));
+    }
+
     @GetMapping("/findbycustid/{custId}")
     public ResponseEntity<Optional<Customer>> findByCustId(@PathVariable int custId){
         return ResponseEntity.ok(customerServiceImpl.findById(custId));
